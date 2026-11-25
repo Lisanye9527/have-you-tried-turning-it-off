@@ -4,23 +4,30 @@
 
 # Have You Tried Turning It Off?
 
-An entry for the make.fun bounty
-[Have You Tried Turning It Off?](https://make.fun/bounty/u-motasimfuad-have-you-tried-turning-it-off-154a938b).
+An entry for the make.fun bounty "Have You Tried Turning It Off?".
 
-The program (`main.py`, Python 3, standard library only) writes the
-entry text to `/output/entry.txt`:
+The entry is a one-line joke about the world's most famous piece of
+tech-support advice: it works, the caller confirms it worked, and the
+script simply ends — because there never was a page two. The program
+in this repository (`main.py`, Python 3, standard library only) holds
+that line as a constant, validates it against the bounty gate (UTF-8
+text, 1–199 characters, a single line, not only whitespace), writes it
+to `entry.txt`, and reads the file back to confirm the bytes match.
+
+The entry text:
 
 > Have you tried turning it off and on again? …You have? Then we're done here — that was the entire script. They never wrote a page two; I'm as lost as you are.
 
-The text is a constant in the program, so every run writes exactly the
-same bytes. The program checks the text against the bounty gate before
-writing and fails loudly if it ever drifts out of bounds.
-
-Run it locally:
+## Run it
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 cat out/entry.txt
 ```
 
-Licensed under the MIT License (see `LICENSE`).
+When `MAKEFUN_OUTPUT_DIR` is unset, the program writes to `/output`,
+matching the grader container.
+
+## License
+
+Licensed under the MIT License.
